@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MARAJOARA</title>
+
+	<link rel="stylesheet" th:href="@{/Style/morador/style_aluguel_morador.css}">
+
+</head>
+
+<body>
+	<!--header-->
+	<header>
+			<div class="nav_logo">
+				<img class="img_logo" th:src="@{/Images/img_logo.jpg}" alt="Logo Marajoara">
+			</div>
+			<div class="nav_area_user">
+				<p class="p_nav" th:text="${usuario.nome}"></p>
+				<img class="img_nav_login" th:src="@{/Images/img_profile_icon.png}" alt="Ícone do Usuário"
+					onclick="toggleDropdown()">
+				<div id="user-dropdown" class="dropdown-menu">
+					<a th:href="@{/morador/perfil}">Perfil</a>
+					<a th:href="@{/logout}">Sair</a>
+				</div>
+			</div>
+		</header>
+
+	<div class="menu_flex">
+		<div class="container-menu-containers">
+			<!--botoes-->
+			<nav class="button-containter">
+				<h2 class="menu-text" style="text-align: center;">Menu</h2>
+				<hr>
+				<a th:href="@{/morador/eventos}" style="text-decoration: none; color: black; ">
+					<div class="btn">
+						EVENTOS
+					</div>
+				</a>
+				<a th:href="@{/morador/achados}" style="text-decoration: none; color: black;">
+					<div class="btn">
+						ACHADOS E PERDIDOS
+					</div>
+				</a>
+				<a th:href="@{/morador/aluguel}" style="text-decoration: none; color: black; ">
+					<div class="btn">
+						ALUGUEL
+					</div>
+				</a>
+				<a th:href="@{/morador/reclamacoes}" style="text-decoration: none; color: black; ">
+					<div class="btn">
+						RECLAMAÇÕES
+					</div>
+				</a>
+			</nav>
+		</div>
+		
+		<div class="reservation-container">
+			<h1 class="title">ALUGUEL</h1>
+			<div class="reservation-content">
+				<!-- Imagem e descrição -->
+				<div class="location-info">
+					<img id="location-image" class="imagem_aluguel" th:src="@{/Images/salao_de_festas.jpg}" alt="Salão de Festas">
+					<p id="location-description">Salão de Festas: Ideal para comemorações e eventos sociais.</p>
+				</div>
+
+				<!-- Formulário -->
+				<form id="reservation-form" th:action="@{/addReserva}" th:object="${reserva}" method="post">
+				
+					<label for="location">Selecione o local:</label>
+					
+					<select id="location" name="espaco" required onchange="updateLocationInfo()">
+					
+						<option value="salao_de_festas" class="imagem_aluguel" th:data-img="@{/Images/salao_de_festas.jpg}"
+							data-desc="Salão de Festas: Ideal para comemorações e eventos sociais.">Salão de Festas
+						</option>
+						
+						<option value="churrasqueira"  class="imagem_aluguel" th:data-img="@{/Images/churrasqueira.jpg}"
+							data-desc="Churrasqueira: Perfeita para churrascos e encontros ao ar livre.">Churrasqueira
+						</option>
+						
+						<option value="quadra" class="imagem_aluguel" th:data-img="@{/Images/quadra.jpeg}"
+							data-desc="Quadra: Ótima para esportes e atividades físicas.">Quadra</option>
+							
+						<option value="piscina" class="imagem_aluguel" th:data-img="@{/Images/piscina.jpg}"
+							data-desc="Piscina: Excelente para relaxar e se divertir.">Piscina</option>
+							
+					</select>
+					<label for="date">Data:</label>
+					<input type="date" id="date" th:field="*{data}" required>
+					
+						 <label for="time">Período:</label>
+						 
+					    <div id="time-options">
+					        <input type="checkbox" th:field="*{manha}" id="manha" > <label for="manha">Manhã</label>
+					        <input type="checkbox" th:field="*{tarde}" id="tarde" > <label for="tarde">Tarde</label>
+					        <input type="checkbox" th:field="*{noite}" id="noite" > <label for="noite">Noite</label>
+					    </div>			
+					
+					
+					<input id="time" type="hidden" required>
+					<input type="hidden" name="reservado_por" th:value="${usuario.nome}" required>
+
+					<button type="submit">Reservar</button>
+					
+				</form>
+			</div>
+			<div class="msg_reserva">
+				<div th:if="${erro}" class="alert alert-danger" style="color: red;">
+	    			<p th:text="${erro}"></p>
+				</div>
+		
+				<div th:if="${sucesso}" class="alert alert-success" style="color: green;">
+				    <p th:text="${sucesso}"></p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script th:src="@{/Scripts/morador/script_aluguel.js}"></script>
+	
+	<script>
+		const hoje = new Date().toISOString().split("T")[0];
+		document.getElementById("date").setAttribute("min", hoje);
+	</script>
+	
+</body>
+
+</html>

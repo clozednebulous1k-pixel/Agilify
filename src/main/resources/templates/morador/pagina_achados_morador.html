@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MARAJOARA</title>
+
+	<link rel="stylesheet" th:href="@{/Style/Morador/style_achados_e_perdidos_morador.css}">
+
+</head>
+
+<body>
+	<!--header-->
+	<header>
+			<div class="nav_logo">
+				<img class="img_logo" th:src="@{/Images/img_logo.jpg}" alt="Logo Marajoara">
+			</div>
+			<div class="nav_area_user" >
+				<p class="p_nav" th:text="${usuario.nome}"></p>
+				<img class="img_nav_login" th:src="@{/Images/img_profile_icon.png}" alt="Ícone do Usuário"
+					onclick="toggleDropdown()">
+				<div id="user-dropdown" class="dropdown-menu">
+					<a th:href="@{/morador/perfil}">Perfil</a>
+					<a th:href="@{/logout}">Sair</a>
+				</div>
+			</div>
+		</header>
+	
+	
+	<div class="container_flex">
+		<div class="container-menu-containers">
+			<!--botoes-->
+			<nav class="button-containter">
+				<h2 class="menu-text" style="text-align: center;">Menu</h2>
+				<hr>
+				<a th:href="@{/morador/eventos}" style="text-decoration: none; color: black; ">
+					<div class="btn">
+						EVENTOS
+					</div>
+				</a>
+				<a th:href="@{/morador/achados}" style="text-decoration: none; color: black;">
+					<div class="btn">
+						ACHADOS E PERDIDOS
+					</div>
+				</a>
+				<a th:href="@{/morador/aluguel}" style="text-decoration: none; color: black; ">
+					<div class="btn">
+						ALUGUEL
+					</div>
+				</a>
+				<a th:href="@{/morador/reclamacoes}" style="text-decoration: none; color: black; ">
+					<div class="btn">
+						RECLAMAÇÕES
+					</div>
+				</a>
+			</nav>
+		</div>
+		<!--container-->
+		<div class="container">
+			<h1 class="title">ACHADOS E PERDIDOS</h1>
+			<!--lista-->
+			<div class="items">
+				<div class="item_box_out" th:each="achado:${listAchados}">
+					<div class="item_box" onclick="selectEvent(this)">
+						<img th:src="@{/imgAc/{id}/image(id=${achado.id})}" alt="imagem não carregada"
+						class="img-item">						
+						<ul>
+							<label>Nome do item:</label>
+							<li class="item-nome" th:text="${achado.nome}"></li>
+							<label>Descrição:</label>
+							<li class="item-descr" th:text="${achado.descricao}"></li>
+							<label>Achado às:</label>
+							<li class="item-hora" th:text="${achado.hora_encontro}"></li>
+							<label>Achado em:</label>
+							<li class="item-lugar" th:text="${achado.lugar_encontro}"></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script th:src="@{/Scripts/Morador/Script_achados.js}"></script>
+
+</body>
+
+</html>

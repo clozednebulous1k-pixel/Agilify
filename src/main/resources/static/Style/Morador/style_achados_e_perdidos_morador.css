@@ -1,0 +1,539 @@
+* {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	text-decoration: none;
+
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+/* Header */
+header {
+    background-color: #eed9c4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    font-size: 1.5rem;
+}
+
+.img_logo {
+    height: 6rem; /* Mantém o tamanho proporcional */
+}
+
+.img_nav_login {
+	height: 2rem;
+	margin-left: 1rem;
+}
+
+.nav_area_user {
+	display: flex;
+	align-items: center;
+	padding-right: 0.6rem; /* Ajustado para REM */
+	position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 3.125rem; /* Ajustado para REM */
+    right: 0;
+    background-color: #fff;
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.3125rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+    padding: 0.625rem;
+    z-index: 1000;
+}
+
+.dropdown-menu a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    display: block;
+    padding: 0.3125rem 0.625rem;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;
+}
+.title {
+	text-align: center;
+	font-size: 2.5rem;
+	/* Ajustado para REM */
+	margin-bottom: 1.25rem;
+	/* Ajustado para REM */
+	color: #000000;
+}
+
+.container_flex {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+.container
+{
+	width: 70%;	
+	padding: 1rem 1rem 1rem 0.5rem;
+}
+
+.button-containter {
+	background-color: #EED9C4;
+	padding: 3.125rem;
+	width: 20rem;
+	border: 1px solid #bd5612;
+}
+
+.button-containter .btn:hover {
+	background-color: #d57617b1;
+}
+
+.btn {
+	background-color: antiquewhite;
+	font-size: 1.5rem;
+	padding: 1.3rem;
+	margin: 0.3125rem 0px 0.3125rem 0px;
+	text-align: center;
+	transition: 0.3s;
+}
+
+.button-containter .btn a {
+	color: #000000;
+	text-decoration: none;
+	/* Remove o sublinhado */
+}
+
+/* Cor ao passar o mouse */
+.button-containter .btn a:hover {
+	color: #ce6f17;
+	/* Cor ao passar o mouse */
+	transition: color 0.1s ease;
+	/* Animação suave */
+}
+
+.menu-text {
+	font-size: 2rem;
+	margin-bottom: 0.3rem;
+}
+
+/* Estilo para o container dos botões */
+.buttons {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	/* Espaçamento entre os botões */
+	margin-top: 1.25rem;
+	/* Margem superior */
+}
+
+/* Estilo para os botões */
+.buttons button {
+	padding: 0.625rem 1.25rem;
+	/* Espaçamento interno */
+	font-size: 1rem;
+	/* Tamanho da fonte */
+	color: #fff;
+	/* Texto branco */
+	background-color: #d57617;
+	/* Cor semelhante ao hover do menu lateral */
+	border: none;
+	border-radius: 0.3125rem;
+	/* Bordas arredondadas */
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+/* Efeito hover nos botões */
+.buttons button:hover {
+	background-color: #bd5612;
+	/* Cor semelhante à borda do container */
+}
+
+/* Botão de cancelar com cor diferente */
+.buttons button:nth-child(3) {
+	background-color: #d38435;
+	/* Cor semelhante ao fundo dos itens */
+}
+
+.buttons button:nth-child(3):hover {
+	background-color: #bd5612;
+	/* Cor semelhante à borda do container */
+}
+
+/* Modal */
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+	background-color: #fff;
+	margin: 10% auto;
+	padding: 2rem;
+	border: 0.1rem solid #ccc;
+	border-radius: 0.8rem;
+	width: 50%;
+	max-width: 90%;
+	/* Garante que o modal não ultrapasse a largura do container */
+	box-sizing: border-box;
+}
+
+.modal-content h2 {
+	margin-top: 0;
+}
+
+.modal-content label {
+	display: block;
+	margin: 1rem 0 0.5rem;
+}
+
+.modal-content input,
+.modal-content textarea {
+	width: 100%;
+	padding: 1rem;
+	margin-bottom: 1.5rem;
+	border: 0.1rem solid #ccc;
+	border-radius: 0.4rem;
+	box-sizing: border-box;
+}
+
+.modal-content button {
+	background-color: #d57617;
+	color: white;
+	padding: 1rem 2rem;
+	border: none;
+	border-radius: 0.4rem;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+	background-color: #bd5612;
+}
+
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 2.8rem;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.close:hover {
+	color: black;
+}
+
+/* Estilo para os itens */
+.items {
+	margin-top: 2rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+	/* Responsivo */
+	gap: 1.5rem;
+	/* Espaçamento entre os itens */
+	max-width: 100%;
+	/* Garante que os itens não ultrapassem a largura do container */
+	box-sizing: border-box;
+}
+
+.item {
+	border: 0.1rem solid #ccc;
+	border-radius: 0.8rem;
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	background-color: #fff;
+	box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
+}
+
+.add-button-container {
+	display: flex;
+	align-self: center;
+	gap: 2rem;
+	margin-top: 2rem;
+	box-sizing: border-box;
+}
+
+.add-button-container button {
+	padding: 0.75rem 1.5rem;
+	font-size: 1rem;
+	color: #fff;
+	background-color: #d57617;
+	border: none;
+	border-radius: 0.4rem;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.add-button-container button:hover {
+	background-color: #bd5612;
+}
+
+/* Estilo para o item selecionado */
+.item.selected {
+	border: 0.2rem solid #007bff;
+	background-color: #e6f7ff;
+}
+
+/* Indica que o modo de exclusão está ativo */
+.delete-mode .item {
+	cursor: pointer;
+	opacity: 0.9;
+	transition: opacity 0.3s ease;
+}
+
+.delete-mode .item:hover {
+	opacity: 1;
+	background-color: #ffe6e6;
+}
+
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+
+	/* Ajusta o layout para que o menu lateral fique em cima */
+	.container-menu-containers {
+		flex-direction: column;
+		/* Empilha os elementos verticalmente */
+		align-items: center;
+		/* Centraliza os elementos */
+	}
+
+	.button-containter {
+		width: 100%;
+		padding: 1.5rem;
+		margin-bottom: 1.5rem;
+		position: relative;
+		top: 0;
+		left: 0;
+	}
+
+
+
+	.container h1 {
+		font-size: 2rem;
+		text-align: center;
+		left: 0;
+		bottom: 0;
+	}
+
+	.items {
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+}
+
+/* Responsividade para telas muito pequenas */
+@media (max-width: 480px) {
+	.button-containter {
+		padding: 1rem;
+	}
+
+	.container {
+		padding: 0.8rem;
+	}
+
+	.container h1 {
+		font-size: 1.8rem;
+	}
+
+	.items {
+		gap: 0.8rem;
+	}
+
+	.btn {
+		font-size: 1.2rem;
+		padding: 1rem;
+	}
+}
+
+/* Container Menu */
+.container-menu-containers {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-evenly;
+	padding: 1rem 0.5rem 1rem 1rem;
+}
+
+.button-containter {
+	position: relative;
+	background-color: #EED9C4;
+	padding: 3.125rem;
+	width: 20rem;
+	border: 0.0625rem solid #bd5612;
+
+}
+
+.menu-text {
+	font-size: 2rem;
+	margin-bottom: 1rem;
+	text-align: center;
+}
+
+.btn {
+	background-color: antiquewhite;
+	font-size: 1.5rem;
+	padding: 1.3rem;
+	margin: 0.3125rem 0;
+	text-align: center;
+	transition: 0.3s;
+
+}
+
+.btn a {
+	color: #000000;
+	text-decoration: none;
+}
+
+.btn:hover {
+	background-color: #d57617b1;
+}
+
+.btn a:hover {
+	color: #ce6f17;
+	transition: color 0.1s ease;
+}
+
+/* Container Principal */
+.container {
+	margin: 0 auto;
+	padding: 1.875rem;
+	/* Limita a altura máxima do container */
+	background-color: #ffffff;
+	border-radius: 1.5rem;
+	border: 0.0625rem solid #bd5612;
+	box-sizing: border-box;
+}
+
+
+/* Lista de Itens */
+.items {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+	gap: 1.5rem;
+	overflow-y: auto;
+	max-height: 30rem;
+	width: 60rem;
+	margin: 0 auto;
+	padding: 0;
+	box-sizing: border-box;
+	outline: 2px black;
+}
+
+.item_box_out {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #eed9c4;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	border: 0.0625rem solid #bd5612;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.item_box {
+	display: flex;
+	flex-direction: row;
+	width: 20rem;
+	align-items: center;
+	background-color: rgb(192, 192, 192);
+	padding: 1rem;
+	border-radius: 0.5rem;
+	border: 0.0625rem solid #bd5612;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.item_box:hover {
+	transform: scale(1.05);
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.img-item {
+	max-width: 5rem;
+	max-height: 9rem;
+}
+
+
+.item_box ul {
+	width: 100%;
+	padding: 0.5rem;
+	margin: 0.5rem 0;
+	background-color: #ffffff;
+	border-radius: 0.5rem;
+	border: 0.0625rem solid #ccc;
+	box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
+}
+
+.item_box ul li {
+	font-size: 1.2rem;
+	color: #333;
+	margin: 0.5rem 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+	.container-menu-containers {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.button-containter {
+		width: 100%;
+		padding: 1.5rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.container {
+		width: 100%;
+		max-height: 30rem;
+		/* Ajusta a altura máxima para telas menores */
+	}
+
+	.container h1 {
+		font-size: 2rem;
+	}
+
+	.items {
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.button-containter {
+		padding: 1rem;
+	}
+
+	.container {
+		padding: 0.8rem;
+		max-height: 25rem;
+		/* Ajusta a altura máxima para telas muito pequenas */
+	}
+
+	.container h1 {
+		font-size: 1.8rem;
+	}
+
+	.items {
+		gap: 0.8rem;
+	}
+
+	.btn {
+		font-size: 1.2rem;
+		padding: 1rem;
+	}
+}

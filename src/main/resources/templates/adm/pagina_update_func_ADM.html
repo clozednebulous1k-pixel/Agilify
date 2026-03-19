@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Nova Reclamação - Marajoara</title>
+	<link rel="stylesheet" th:href="@{/Style/Adm/style_perfil_ADM.css}">
+</head>
+
+<body>
+	<header>
+		<div class="nav_logo">
+			<img class="img_logo" th:src="@{/Images/img_logo.jpg}" alt="Logo Marajoara">
+		</div>
+		<div class="nav_area_user">
+			<p class="p_nav" th:text="${usuario.nome}"></p>
+			<img class="img_nav_login" th:src="@{/Images/img_profile_icon.png}" alt="Ícone do Usuário"
+				onclick="toggleDropdown()">
+			<div id="user-dropdown" class="dropdown-menu">
+				<a th:href="@{/adm/perfil}">Perfil</a>
+				<a th:href="@{/adm/configuracoes}">Configurações</a>
+				<a th:href="@{/logout}">Sair</a>
+			</div>
+		</div>
+	</header>
+'
+	<main>
+		<section class="perfil-container">
+			<h1>Atualizar Funcionário</h1>
+			<form id="perfil-form" action="#" th:action="@{/updateFunc}" th:object="${funcionario}" method="POST">
+				<input class="input_form" type="hidden" th:field="*{id}"/>
+				<label for="porteiro-nome">Nome:</label>
+				<input class="input_form" type="text" th:field="*{nome}" required>
+				<label for="porteiro-email">Email:</label>
+				<input class="input_form" type="email" th:field="*{email}" required>
+				<input class="input_form" type="text" hidden="true" th:field="*{senha}" required>
+				<input type="hidden" th:field="*{updatedOn}">
+				<input type="hidden" name="updatedBy" th:value="${usuario.nome}">
+				<button type="submit">Salvar</button>
+			</form>
+			<a th:href="@{/adm/configuracoes}" class="btn_voltar">Voltar</a>
+		</section>
+	</main>
+
+	<!-- Confirmação de alteração -->
+	<div id="confirmacao-alteracao" class="confirmacao-modal" style="display:none;">
+		<div class="confirmacao-content">
+			<p id="confirmacao-texto">Tem certeza que deseja alterar esta informação?</p>
+			<button type="button" onclick="confirmarAlteracao()">Sim</button>
+			<button type="button" onclick="fecharConfirmacao()">Não</button>
+		</div>
+	</div>
+
+	<script th:src="@{/Scripts/ADM/script_perfilADM.js}"></script>
+</body>
+
+</html>

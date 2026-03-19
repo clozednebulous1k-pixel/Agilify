@@ -1,0 +1,380 @@
+/* Reset básico */
+body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos gerais */
+body {
+    background-image: url(../imgs/img_predios.jpg); /* Caminho da imagem de fundo */
+    background-size: cover; /* Cobrir toda a tela */
+    background-position: center; /* Centralizar a imagem */
+    background-repeat: no-repeat; /* Não repetir a imagem */
+    display: flex; /* Ativa o flexbox */
+    justify-content: flex-start; /* Alinha os itens à esquerda */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh;
+    position: relative;
+    gap: 50px; /* Espaçamento entre o texto e o contêiner */
+}
+
+/* desfoque no fundo */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    filter: blur(3px); /* Aplica o desfoque */
+    z-index: -1; /* Coloca atrás do conteúdo */
+}
+
+/* Cabeçalho */
+header {
+    text-align: left; /* Alinha o texto à esquerda */
+    color: #fff;
+    z-index: 1; /* Garante que o conteúdo fique acima do fundo desfocado */
+}
+
+header h1 {
+    
+    left: 20rem;
+    white-space: normal;
+    position: relative;
+    font-size: 70px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra no texto */
+
+}
+
+header p {
+    
+    position: relative;
+    display: flex;
+    left: 23rem;
+    bottom: 2rem;
+    font-size: 18px;
+    color: #e0e0e0;
+}
+
+/* Contêiner de Login */
+.login-container, .recovery-container, .register-container {
+    position: relative;
+    max-width: 400px; /* Define a largura máxima */
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 1; /* Garante que o conteúdo fique acima do fundo desfocado */
+    left: 25rem;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #A0522D; /* Botão marrom */
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #8B4513; 
+}
+
+p {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #555;
+}
+
+p a {
+    color: #A0522D;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+.forgot-password {
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.forgot-password a {
+    color: #8B4513; 
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+/* Contêiner de Recuperação */
+.recovery-container {
+    position: relative;
+    
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.recovery-container h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.recovery-container .input-group {
+    margin-bottom: 1rem;
+}
+
+.recovery-container label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.recovery-container input, #recovery-container select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+}
+
+.recovery-container button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.recovery-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Contêiner de Registro */
+.register-container h2 {
+    margin-bottom: 8px; /* Reduzi o espaçamento inferior */
+    font-size: 1.8rem; /* Ajustei o tamanho da fonte */
+    color: #333;
+}
+
+.register-container .input-group {
+    margin-bottom: 6px; /* Reduzi o espaçamento entre os campos */
+    text-align: left;
+}
+
+.register-container .input-group label {
+    display: block;
+    margin-bottom: 2px; /* Reduzi o espaçamento entre o label e o campo */
+    font-size: 1rem; /* Ajustei o tamanho da fonte */
+    color: #555;
+}
+
+.register-container .input-group input {
+    width: 100%;
+    padding: 6px; /* Reduzi o espaçamento interno dos campos */
+    font-size: 0.9rem; /* Ajustei o tamanho da fonte */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.register-container button {
+    width: 100%;
+    padding: 8px; /* Reduzi o espaçamento interno do botão */
+    background-color: #A0522D; /* Botão marrom */
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1rem; /* Ajustei o tamanho da fonte */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register-container button:hover {
+    background-color: #8B4513; 
+}
+
+/* Estilo para o contêiner da senha */
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Estilo para o campo de senha */
+.password-container input {
+    flex: 1;
+}
+
+/* Estilo para o ícone de olho */
+.toggle-password {
+    position: absolute;
+    right: 0.5rem;
+    cursor: pointer;
+    font-size: 1.25rem; /* Ajusta o tamanho do ícone */
+    color: #555;
+    user-select: none; /* Impede a seleção do ícone */
+}
+
+.toggle-password:hover {
+    color: #000; /* Muda a cor ao passar o mouse */
+}
+
+#password-warning {
+    color: red;
+    font-size: 0.875rem; /* 14px convertido para REM */
+    margin-top: 0.5rem;
+    display: none; /* Esconde o aviso por padrão */
+}
+
+#code-group {
+    margin-top: 1rem;
+}
+
+#code-group input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+}
+#code-error {
+    color: red;
+    font-size: 0.875rem; /* 14px */
+    margin-top: 0.5rem;
+    display: none; /* Esconde a mensagem por padrão */
+}
+
+/* Contêiner de Redefinição de Senha */
+.reset-password-container {
+   
+    position: relative;
+    left: 22rem;
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.reset-password-container .input-group {
+    margin-bottom: 1rem;
+}
+
+.reset-password-container label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.reset-password-container input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+}
+/* Estilo para o ícone de olho */
+.toggle-password1 {
+    position: absolute;
+    right: 2rem;
+    margin-top: 0.3rem;
+    cursor: pointer;
+    font-size: 1.25rem; /* Ajusta o tamanho do ícone */
+    color: #555;
+    user-select: none; /* Impede a seleção do ícone */
+}
+/* Responsividade para telas médias */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column; /* Empilha os elementos verticalmente */
+        justify-content: center; /* Centraliza os elementos */
+        gap: 1.25rem; /* Reduz o espaçamento entre os elementos */
+    }
+
+    header h1 {
+        font-size: 3rem; /* Reduz o tamanho do título */
+        left: 0;
+        text-align: center;
+    }
+
+    header p {
+        font-size: 1rem; /* Reduz o tamanho do texto */
+        left: 0;
+        bottom: 0;
+        text-align: center;
+    }
+
+    .login-container, .recovery-container, .register-container {
+        left: 0;
+        max-width: 90%; /* Ajusta a largura para caber na tela */
+        padding: 1.25rem; /* Reduz o padding */
+    }
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2.5rem; /* Reduz ainda mais o tamanho do título */
+    }
+
+    header p {
+        font-size: 0.875rem; /* Ajusta o tamanho do texto */
+    }
+
+    .login-container, .recovery-container, .register-container {
+        max-width: 100%; /* Ocupa toda a largura da tela */
+        padding: 1rem; /* Reduz o padding */
+    }
+
+    button {
+        font-size: 0.875rem; /* Reduz o tamanho do texto do botão */
+        padding: 0.625rem; /* Ajusta o padding do botão */
+    }
+
+    .input-group input {
+        font-size: 0.875rem; /* Ajusta o tamanho do texto dos inputs */
+        padding: 0.5rem; /* Reduz o padding dos inputs */
+    }
+}
+

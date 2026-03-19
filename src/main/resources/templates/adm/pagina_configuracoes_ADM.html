@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Nova Reclamação - Marajoara</title>
+	<link rel="stylesheet" th:href="@{/Style/Adm/style_configuracoes_ADM.css}">
+
+</head>
+
+<body>
+	<!--header-->
+	<header>
+			<div class="nav_logo">
+				<img class="img_logo" th:src="@{/Images/img_logo.jpg}" alt="Logo Marajoara">
+			</div>
+			<div class="nav_area_user">
+				<p class="p_nav" th:text="${usuario.nome}"></p>
+				<img class="img_nav_login" th:src="@{/Images/img_profile_icon.png}" alt="Ícone do Usuário"
+					onclick="toggleDropdown()">
+				<div id="user-dropdown" class="dropdown-menu">
+					<a th:href="@{/adm/perfil}">Perfil</a>
+					<a th:href="@{/logout}">Sair</a>
+				</div>
+			</div>
+		</header>
+
+	<main>
+		<section class="porteiros-container">
+			<h1 style="text-align: center;">Porteiros</h1>
+			<button onclick="openAddModal()">Adicionar Porteiro</button>
+			<table class="porteiros-table">
+				<thead>
+					<tr>
+						<th style="text-align: center">Nome</th>
+						<th style="text-align: center">Email</th>
+						<th style="text-align: center">Atualizado por</th>
+						<th style="text-align: center">Atualizado em</th>
+						<th style="text-align: center">Ações</th>
+					</tr>	
+				</thead>
+				<tbody id="porteiros-tbody">
+					<tr th:each="func:${listaFuncionarios}">
+						<td th:text="${func.nome}" style="text-align: center"></td>
+						<td th:text="${func.email}" style="text-align: center"></td>
+						<td th:text="${func.updatedBy}" style="text-align: center"></td>
+						<td th:text="${func.updatedOn}" class="updatedOn" style="text-align: center"></td>
+						<td>
+						<div class=flex_buttons> 
+							<a th:href="@{/adm/viewUpdateFuncForm/{id}(id=${func.id})}" 
+							class="btn btn-primary">Update</a>
+							<a th:href="@{/deleteFunc/{id}(id=${func.id})}" 
+							class="btn btn-danger" style="margin-top: 3px">Delete</a>
+						</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<a th:href="@{/adm/eventos}" class="btn_voltar">Voltar</a>
+		</section>
+	</main>
+
+	<div id="event-modal-add" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal()">&times;</span>
+			<h2>Add Funcionario</h2>
+			<form action="#" th:action="@{/addFunc}" th:object="${funcionario}" method="POST">
+
+				<label for="event-img-add">Nome:</label>
+				<input type="text" name="nome" id="func-nome">
+				
+				<label for="event-description-add">Email:</label>
+				<input type="email" name="email" id="func-email" required>
+				
+				<label for="event-description-add">Senha:</label>
+				<input type="text" name="senha" id="func-senha" required>
+				
+				<input type="hidden" name="updatedBy" th:value="${usuario.nome}">
+
+				<button type="submit" id="save-event">Salvar</button>
+				
+			</form>
+		</div>
+	</div>
+
+	<script th:src="@{/Scripts/ADM/script_configuracoesADM.js}"></script>
+	
+	<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let elementos = document.querySelectorAll("td.updatedOn");
+
+        elementos.forEach((elemento) => {
+            let dataISO = elemento.textContent;
+            
+            if (dataISO) {
+                let data = new Date(dataISO);
+
+                let dataFormatada = data.toLocaleString("pt-BR", { 
+                    day: "2-digit", 
+                    month: "2-digit", 
+                    year: "numeric", 
+                    hour: "2-digit", 
+                    minute: "2-digit", 
+                    second: "2-digit"
+                });
+
+                elemento.textContent = dataFormatada;
+            }
+        });
+    });
+</script>
+	
+</body>
+
+</html>
+
+

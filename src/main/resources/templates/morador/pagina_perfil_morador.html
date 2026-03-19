@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Reclamação - Marajoara</title>
+    <link rel="stylesheet" th:href="@{/Style/Morador/style_perfil_morador.css}">
+</head>
+<body>
+<!-- Header -->
+	<header>
+		<div class="nav_logo">
+			<img class="img_logo" th:src="@{/Images/img_logo.jpg}" alt="Logo Marajoara">
+		</div>
+		<div class="nav_area_user">
+			<p class="p_nav" th:text="${usuario.nome}"></p>
+			<img class="img_nav_login" th:src="@{/Images/img_profile_icon.png}" alt="Ícone do Usuário"
+				onclick="toggleDropdown()">
+			<div id="user-dropdown" class="dropdown-menu">
+				<a th:href="@{/morador/perfil}">Perfil</a>
+				<a th:href="@{/logout}">Sair</a>
+			</div>
+		</div>
+	</header>
+
+<main>
+    <section class="perfil-container">
+        <h1>Meu Perfil</h1>
+        <form id="perfil-form" action="#" th:action="@{/updatePerfilMorador}" th:object="${morador}" method="post">
+            <div class="perfil-item">
+                <label for="perfil-nome">Nome:</label>
+                <input type="text" id="perfil-nome" name="nome" th:value="${usuario.nome}" required>
+            </div>
+            <div class="perfil-item">
+                <label for="perfil-email">Email:</label>
+                <input type="email" id="perfil-email" name="email" th:value="${usuario.email}" required>
+            </div>
+            <div class="perfil-item">
+                <label for="perfil-senha">Senha:</label>
+                <input type="text" id="perfil-senha" name="senha" th:value="${usuario.senha}" required>
+            </div>
+            <button type="submit" class="salvar-btn">Salvar Alterações</button>
+        </form>
+        <div style="margin-top: 2rem;">
+			<a th:href="@{/morador/eventos}" class="btn_voltar">Voltar</a>
+		</div>
+    </section>
+</main>
+
+<!-- Confirmação de alteração -->
+<div id="confirmacao-alteracao" class="confirmacao-modal" style="display:none;">
+    <div class="confirmacao-content">
+        <p id="confirmacao-texto">Tem certeza que deseja alterar esta informação?</p>
+        <button type="button" onclick="confirmarAlteracao()">Sim</button>
+        <button type="button" onclick="fecharConfirmacao()">Não</button>
+    </div>
+</div>
+
+<script th:src="@{/Scripts/morador/script_perfil.js}"></script>
+</body>
+</html>

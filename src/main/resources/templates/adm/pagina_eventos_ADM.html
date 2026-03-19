@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MARAJOARA</title>
+
+	<link rel="stylesheet" th:href="@{/Style/Adm/style_eventos_ADM.css}">
+
+</head>
+
+<body>
+	<!--header-->
+	<header>
+			<div class="nav_logo">
+				<img class="img_logo" th:src="@{/Images/img_logo.jpg}" alt="Logo Marajoara">
+			</div>
+			<div class="nav_area_user">
+				<p class="p_nav" th:text="${usuario.nome}"></p>
+				<img class="img_nav_login" th:src="@{/Images/img_profile_icon.png}" alt="Ícone do Usuário"
+					onclick="toggleDropdown()">
+				<div id="user-dropdown" class="dropdown-menu">
+					<a th:href="@{/adm/perfil}">Perfil</a>
+					<a th:href="@{/adm/configuracoes}">Configurações</a>
+					<a th:href="@{/logout}">Sair</a>
+				</div>
+			</div>
+		</header>
+
+	<div class="container_flex">
+		<div class="container-menu-containers">
+			<!--botoes-->
+			<nav class="button-containter">
+				<h2 class="menu-text" style="text-align: center;">Menu</h2>
+				<hr>
+				<a th:href="@{/adm/eventos}" style="text-decoration: none; color: black; ">
+					<div class="btn"> EVENTOS </div>
+				</a>
+				<a th:href="@{/adm/achados}" style="text-decoration: none; color: black;">
+					<div class="btn"> ACHADOS E PERDIDOS</div>
+				</a>
+				<a th:href="@{/adm/aluguel}" style="text-decoration: none; color: black; ">
+					<div class="btn">ALUGUEL</div>
+				</a>
+				<a th:href="@{/adm/reclamacoes}" style="text-decoration: none; color: black; ">
+					<div class="btn"> RECLAMAÇÕES </div>
+				</a>
+			</nav>
+		</div>
+		<!--container-->
+		<div class="container">
+			<div class="container_eventos_border">
+				<h1 class="title">EVENTOS</h1>
+				<!--galeria-->
+				<div class="gallery" id="gallery">
+					<div class="gallery-item" onclick="selectEvent(this)" th:each="evento:${listaEventos}">
+						<p hidden="true" th:text="${evento.id}" class="gallery-id"></p>
+						<img th:src="@{/imgEv/{id}/image(id=${evento.id})}" alt="Evento" class="gallery-img"
+							style="max-height: 70px">
+						<p class="gallery-description" th:text="${evento.descricao}"></p>
+						<p class="gallery-date" th:text="${#temporals.format(evento.data, 'dd/MM/yyyy')}"></p>
+					</div>
+				</div>
+
+				<!-- Botões abaixo da galeria -->
+				<div class="gallery-buttons">
+					<button onclick="openAddEventModal()">Adicionar</button>
+					<button onclick="openEditEventModal()">Editar</button>
+					<button onclick="enableDeleteMode()">Excluir</button>
+				</div>
+			</div>
+
+			<!-- adicionar eventos -->
+			<div id="event-modal-add" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal()">&times;</span>
+					<h2>Adicionar Evento</h2>
+					<form action="#" th:action="@{/addEvento}" th:object="${evento}" enctype="multipart/form-data"
+						method="POST">
+						<label for="event-img-add">Imagem do Evento:</label>
+						<input type="file" name="image" id="event-img-add" accept="image/*">
+
+						<label for="event-description-add">Descrição:</label>
+						<input type="text" th:field="*{descricao}" id="event-description-add"
+							placeholder="Digite a descrição do evento" required>
+
+						<label for="event-date-add">Data:</label>
+						<input type="date" th:field="*{data}" id="event-date-add" required>
+
+						<button type="submit" id="save-event">Salvar</button>
+					</form>
+				</div>
+			</div>
+
+			<!-- editar eventos -->
+			<div id="event-modal-edit" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal()">&times;</span>
+					<h2>Editar Evento</h2>
+					<form action="#" th:action="@{/updateEvento}" th:object="${evento}" enctype="multipart/form-data"
+						method="POST">
+						<input type="text" hidden="true" th:field="*{id}" id="event-id-edit">
+						<label for="event-img-edit">Imagem do Evento:</label>
+						<input type="file" name="image" id="event-img-edit" accept="image/*">
+
+						<label for="event-img-edit">Descrição:</label>
+						<input type="text" th:field="*{descricao}" id="event-description-edit"
+							placeholder="Digite a descrição do evento" required>
+
+						<label for="event-img-edit">Data:</label>
+						<input type="date" th:field="*{data}" id="event-date-edit" required>
+
+						<button type="submit" id="save-event">Salvar</button>
+					</form>
+				</div>
+			</div>
+
+			<!-- Popup -->
+			<div id="popup" class="popup">
+				<div class="popup-content">
+					<span class="close-btn" onclick="closePopup()">&times;</span>
+					<img id="popup-img" src="" alt="Evento" class="popup-img">
+					<p id="popup-description" class="popup-description"></p>
+					<p id="popup-date" class="popup-date"></p>
+				</div>
+			</div>
+		</div>
+
+		<script th:src="@{/Scripts/ADM/script_eventosADM.js}"></script>
+		<script>
+				const hoje = new Date().toISOString().split("T")[0];
+				document.getElementById("event-date-add").setAttribute("min", hoje);
+		</script>
+
+</body>
+
+</html>

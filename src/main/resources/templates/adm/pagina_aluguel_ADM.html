@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MARAJOARA</title>
+
+	<link rel="stylesheet" th:href="@{/Style/Adm/style_aluguel_ADM.css}">
+
+</head>
+
+<body>
+	<!--header-->
+	<header>
+		<div class="nav_logo">
+			<img class="img_logo" th:src="@{/Images/img_logo.jpg}" alt="Logo Marajoara">
+		</div>
+		<div class="nav_area_user">
+			<p class="p_nav" th:text="${usuario.nome}"></p>
+			<img class="img_nav_login" th:src="@{/Images/img_profile_icon.png}" alt="Ícone do Usuário"
+				onclick="toggleDropdown()">
+			<div id="user-dropdown" class="dropdown-menu">
+				<a th:href="@{/adm/perfil}">Perfil</a>
+				<a th:href="@{/adm/configuracoes}">Configurações</a>
+				<a th:href="@{/logout}">Sair</a>
+			</div>
+		</div>
+	</header>
+
+	<div class="menu_flex">
+		<div class="container-menu-containers">
+			<!--botoes-->
+			<nav class="button-containter">
+				<h2 class="menu-text" style="text-align: center;">Menu</h2>
+				<hr>
+				<a th:href="@{/adm/eventos}" style="text-decoration: none; color: black; ">
+					<div class="btn">
+						EVENTOS
+					</div>
+				</a>
+				<a th:href="@{/adm/achados}" style="text-decoration: none; color: black;">
+					<div class="btn">
+						ACHADOS E PERDIDOS
+					</div>
+				</a>
+				<a th:href="@{/adm/aluguel}" style="text-decoration: none; color: black; ">
+					<div class="btn">
+						ALUGUEL
+					</div>
+				</a>
+				<a th:href="@{/adm/reclamacoes}" style="text-decoration: none; color: black; ">
+					<div class="btn">
+						RECLAMAÇÕES
+					</div>
+				</a>
+			</nav>
+		</div>
+		<div class="reservation-container">
+			<h1 class="title">ALUGUEL</h1>
+			<div class="reservation-content">
+				<table class="porteiros-table">
+					<thead>
+						<tr>
+							<th style="text-align: center">Data</th>
+							<th style="text-align: center">Espaco</th>
+							<th style="text-align: center">Manhã</th>
+							<th style="text-align: center">Tarde</th>
+							<th style="text-align: center">Noite</th>
+							<th style="text-align: center">Reservado por:</th>
+							<th style="text-align: center">Ações</th>
+						</tr>
+					</thead>
+					<div class="table-container">
+					<tbody id="porteiros-tbody">
+						<tr th:each="alu:${listaAluguel}">
+							<td th:text="${#temporals.format(alu.data, 'dd/MM/yyyy')}" style="text-align: center"></td>
+							<td th:text="${alu.espaco}" style="text-align: center"></td>
+							<td th:text="${alu.manha}" style="text-align: center"></td>
+							<td th:text="${alu.tarde}" style="text-align: center"></td>
+							<td th:text="${alu.noite}" style="text-align: center"></td>							
+							<td th:text="${alu.reservado_por}" style="text-align: center"></td>
+							<td>
+								<div class=flex_buttons>
+									<a th:href="@{/deleteReserva/{id}(id=${alu.id})}" class="btn btn-danger"
+										style="margin-top: 3px" >Delete</a>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+					</div>
+				</table>
+			</div>
+		</div>
+	</div>
+
+
+	<script th:src="@{/Scripts/ADM/script_aluguelADM.js}"></script>
+
+</body>
+
+</html>

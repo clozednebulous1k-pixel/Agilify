@@ -1,0 +1,248 @@
+*
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* Remove o espaço vazio à direita */
+html, body {
+    margin: 0; /* Remove margens padrão */
+    padding: 0; /* Remove paddings padrão */
+    width: 100%;
+    height: 100%; /* Garante que ocupe 100% da largura */
+    overflow-x: hidden; /* Remove rolagem horizontal */
+    box-sizing: border-box; /* Inclui bordas e paddings no tamanho total */
+}
+
+/* Garante que nenhum elemento ultrapasse a largura da tela */
+.container, .reservation-container, .button-containter {
+    max-width: 100%; /* Garante que os elementos não ultrapassem a largura da tela */
+    overflow: hidden; /* Remove qualquer conteúdo que ultrapasse */
+}
+
+/* Header */
+header {
+    background-color: #eed9c4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    font-size: 1.5rem;
+}
+
+.img_logo {
+    height: 6rem; /* Mantém o tamanho proporcional */
+}
+
+.img_nav_login {
+	height: 2rem;
+	margin-left: 1rem;
+}
+.imagem_aluguel{
+	max-width: 25rem;
+	max-height: 25rem;
+}
+.nav_area_user {
+	display: flex;
+	align-items: center;
+	padding-right: 0.6rem; /* Ajustado para REM */
+	position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 3.125rem; /* Ajustado para REM */
+    right: 0;
+    background-color: #fff;
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.3125rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+    padding: 0.625rem;
+    z-index: 1000;
+}
+
+.dropdown-menu a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    display: block;
+    padding: 0.3125rem 0.625rem;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;
+}
+
+.menu_flex
+{
+	display: flex;
+	align-items: center;
+	margin-top: 1rem;
+	justify-content: space-evenly;
+}
+
+/* Container more */
+.container-menu-containers {
+    display: flex;
+    align-items: flex-start; /* Alinha o menu ao topo */
+    justify-content: space-evenly; /* Centraliza mais o menu lateral */
+    gap: 1.875rem; /* Ajustado para REM */
+    padding: 0.5rem; /* Ajustado para REM / / Ajustado para REM */
+}
+
+.title {
+    text-align: center;
+    font-size: 2.5rem; /* Ajustado para REM / / Ajustado para REM */
+    color: #000000;
+}
+
+/* Menu lateral */
+.button-containter { 
+    background-color: #EED9C4;
+    padding: 3.125rem;
+    width: 27rem;
+    border: 1px solid #bd5612;
+}
+
+.button-containter .btn:hover {
+    background-color: #d57617b1;
+}
+
+.alert 
+{
+	text-align: center;
+	font-size: 20px;
+}
+
+.btn {
+    text-decoration: none;
+    background-color: antiquewhite;
+    font-size: 1.5rem; /* Ajustado para REM */
+    padding: 1.3rem; /* Ajustado para REM */
+    margin: 0.3125rem 0; /* Ajustado para REM */
+    text-align: center;
+    transition: 0.3s;
+}
+
+/* Estilo para os links do menu lateral */
+.button-containter .btn a {
+    color: #000000; /* Cor padrão do texto */
+    text-decoration: none; /* Remove o sublinhado */
+}
+
+/* Cor ao passar o mouse */
+.button-containter .btn a:hover {
+    color: #ce6f17; /* Cor ao passar o mouse */
+    transition: color 0.1s ease; /* Animação suave */
+}
+
+.menu-text {
+    font-size: 2rem; /* Ajustado para REM */
+    margin-bottom: 0.3rem; /* Ajustado para REM */
+}
+
+/* Container reservar local */
+.reservation-container {
+	padding: 4px;
+    border: 0.0625rem solid #c76c16; /* Ajustado para REM */
+    border-radius: 0.5rem; /* Ajustado para REM */
+    background-color: #f9f9f9; /* Ajustado para REM */
+}
+#location-description {
+    position: relative;
+    margin-top: 2rem;
+}
+.reservation-container h2 {
+    position: relative;
+    left: 20rem; /* Ajustado para REM */
+    margin-bottom: 0.9375rem; /* Ajustado para REM */
+    bottom: 5rem; /* Ajustado para REM */
+    font-size: 2.5rem; /* Ajustado para REM */
+}
+
+.reservation-content {
+    display: flex;
+    gap: 1.25rem; /* Ajustado para REM */
+    align-items: center;
+}
+
+.location-info {
+    position: relative;
+    flex: 1;
+    text-align: center;
+    bottom: 3rem; /* Ajustado para REM */
+}
+
+.location-image {
+    position: relative;
+    height: 15rem; /* Ajustado para REM */
+    width: 25rem; /* Ajustado para REM */
+    border-radius: 0.5rem; /* Ajustado para REM */
+    top: 1rem; /* Ajustado para REM */
+    border: 0.125rem solid #000000; /* Ajustado para REM */
+}
+
+.reservation-container form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    bottom: 7rem; /* Ajustado para REM */
+}
+
+.reservation-container label {
+    position: relative;
+    margin: 1.875rem 0 0.3125rem; /* Ajustado para REM */
+    bottom: 1rem; /* Ajustado para REM */
+    font-size: 1.5rem; /* Ajustado para REM */
+}
+
+.reservation-container select,
+.reservation-container input,
+.reservation-container button {
+    padding: 0.625rem; /* Ajustado para REM */
+    margin-bottom: 0.9375rem; /* Ajustado para REM */
+    border: 0.0625rem solid #ccc; /* Ajustado para REM */
+    border-radius: 0.25rem; /* Ajustado para REM */
+}
+
+.reservation-container button {
+    background-color: #bd5612;
+    color: white;
+    cursor: pointer;
+}
+
+.reservation-container button:hover {
+    background-color: #ce821e;
+}
+
+/* Novos estilos para os botões de tempo */
+#time-options {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.time-button {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.time-button:hover {
+    background-color: #ddd;
+}
+
+.time-button.selected {
+    background-color: #A0522D;
+    color: #fff;
+    border-color: #8B4513;
+}
