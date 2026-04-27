@@ -1,0 +1,7 @@
+.git
+.idea
+.metadata
+target
+node_modules
+*.log
+README.md
