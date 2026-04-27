@@ -57,6 +57,34 @@
 					</tr>
 				</tbody>
 			</table>
+		</section>
+
+		<section class="porteiros-container" style="margin-top: 24px;">
+			<h1 style="text-align: center;">Moradores</h1>
+			<button onclick="openAddMoradorModal()">Adicionar Morador</button>
+			<table class="porteiros-table">
+				<thead>
+					<tr>
+						<th style="text-align: center">Nome</th>
+						<th style="text-align: center">Email</th>
+						<th style="text-align: center">Ações</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="mor:${listaMoradores}">
+						<td th:text="${mor.nome}" style="text-align: center"></td>
+						<td th:text="${mor.email}" style="text-align: center"></td>
+						<td>
+							<div class="flex_buttons">
+								<form th:action="@{/deleteMorador/{id}(id=${mor.id})}" method="post"
+									onsubmit="return confirm('Deseja excluir este morador?');">
+									<button type="submit" class="btn btn-danger">Delete</button>
+								</form>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 			<a th:href="@{/adm/eventos}" class="btn_voltar">Voltar</a>
 		</section>
 	</main>
@@ -80,6 +108,27 @@
 
 				<button type="submit" id="save-event">Salvar</button>
 				
+			</form>
+		</div>
+	</div>
+	
+	<div id="morador-modal-add" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeMoradorModal()">&times;</span>
+			<h2>Add Morador</h2>
+			<form action="#" th:action="@{/addMorador}" method="POST">
+
+				<label for="mor-nome">Nome:</label>
+				<input type="text" name="nome" id="mor-nome" required>
+
+				<label for="mor-email">Email:</label>
+				<input type="email" name="email" id="mor-email" required>
+
+				<label for="mor-senha">Senha:</label>
+				<input type="text" name="senha" id="mor-senha" required>
+
+				<button type="submit">Salvar</button>
+
 			</form>
 		</div>
 	</div>

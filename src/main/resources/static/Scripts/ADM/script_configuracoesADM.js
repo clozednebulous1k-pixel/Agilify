@@ -23,7 +23,6 @@ function openAddModal() {
 	document.getElementById('func-nome').value = '';
 	document.getElementById('func-email').value = '';
 	document.getElementById('func-senha').value = '';
-	document.getElementById('func-OAuth2').value = false;
 }
 
 function closeModal() {
@@ -31,4 +30,18 @@ function closeModal() {
 
 	modal1.style.display = "none";
 
+}
+
+function openAddMoradorModal() {
+	const modal = document.getElementById("morador-modal-add");
+	modal.style.display = "block";
+
+	document.getElementById('mor-nome').value = '';
+	document.getElementById('mor-email').value = '';
+	document.getElementById('mor-senha').value = '';
+}
+
+function closeMoradorModal() {
+	const modal = document.getElementById("morador-modal-add");
+	modal.style.display = "none";
 }

@@ -55,6 +55,32 @@ Se quiser usar **outro usuário ou outra senha**, edite o arquivo:
 
 ---
 
+## Passo 1.1: Banco local persistente (recomendado para testes sem cloud)
+
+Se você quer rodar **somente local**, sem MySQL e sem internet, use o perfil `local`.
+Esse perfil cria/usa um banco H2 em arquivo em:
+
+- `./data/marajoara-local.mv.db`
+
+Com isso, os dados **não somem** ao reiniciar a aplicação.
+
+### Windows
+```cmd
+.\rodar-local.bat
+```
+
+### Linux/macOS
+```bash
+./rodar-local.sh
+```
+
+Ou via Maven:
+```cmd
+.\mvnw.cmd spring-boot:run -Dspring-boot.run.profiles=local
+```
+
+---
+
 ## Passo 2: (Opcional) Configurar e-mail
 
 O sistema usa Gmail para envio de e-mails (recuperação de senha, etc.).  

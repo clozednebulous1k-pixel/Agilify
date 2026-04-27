@@ -29,7 +29,20 @@ public class SecurityConfig {
 		return http
 			    .csrf(customizer -> customizer.disable())
 			    .authorizeHttpRequests(request -> request
-			    		.anyRequest().permitAll()
+			    		.requestMatchers(
+			    				"/",
+			    				"/login",
+			    				"/addMorador",
+			    				"/updateSenha",
+			    				"/sendCodMor",
+			    				"/Style/**",
+			    				"/Scripts/**",
+			    				"/Images/**",
+			    				"/h2-console/**"
+			    		).permitAll()
+			    		.requestMatchers("/adm/**").hasAnyRole("ADM", "FUNCIONARIO")
+			    		.requestMatchers("/morador/**").hasRole("MORADOR")
+			    		.anyRequest().authenticated()
 			    )
 			    .formLogin(form -> form
 			    		.loginPage("/") 
@@ -44,6 +57,7 @@ public class SecurityConfig {
 			    	    .deleteCookies("JSESSIONID")
 			    	    .permitAll()
 			    )
+			    .headers(headers -> headers.frameOptions(frame -> frame.disable()))
 			    .build();
 	}	
 

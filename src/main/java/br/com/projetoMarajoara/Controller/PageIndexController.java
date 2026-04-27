@@ -1,5 +1,6 @@
 package br.com.projetoMarajoara.Controller;
 
+import br.com.projetoMarajoara.Model.Morador;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ public class PageIndexController {
             @RequestParam(value = "error", required = false) String error,
             @RequestParam(value = "logout", required = false) String logout,
             Model model) {
+        model.addAttribute("morador", new Morador());
         
         if (error != null) {
             model.addAttribute("errorMessage", "Usuário ou senha inválidos");
@@ -25,10 +27,10 @@ public class PageIndexController {
         return "login";
     }
 
-    /** Entrada sem login: redireciona para a área do morador. */
+    /** Entrada direta volta para a própria página de login. */
     @GetMapping("/entrar")
     public String entrarComoUsuario() {
-        return "redirect:/morador/eventos";
+        return "redirect:/";
     }
     
 }
