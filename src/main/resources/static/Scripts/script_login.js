@@ -69,14 +69,23 @@ function sendRecoveryCode() {
 			email: email1
 		})
 	})
-		.then(response => response.text())
-		.then(data => window.alert(data))
+		.then(response => response.text().then(text => ({ ok: response.ok, status: response.status, text })))
+		.then(({ ok, status, text }) => {
+			const pareceHtml = /^\s*</.test(text);
+			if (pareceHtml) {
+				window.alert("Não foi possível enviar o código (acesso negado ou sessão inválida). Atualize a página e tente de novo.");
+				return;
+			}
+			if (!ok) {
+				window.alert(text || ("Erro ao enviar e-mail (" + status + ")."));
+				return;
+			}
+			window.alert(text);
+			document.getElementById('code-group').style.display = 'block';
+			document.getElementById('send-code-button').style.display = 'none';
+			document.getElementById('verify-code-button').style.display = 'inline-block';
+		})
 		.catch(error => window.alert(error));
-
-
-	document.getElementById('code-group').style.display = 'block';
-	document.getElementById('send-code-button').style.display = 'none';
-	document.getElementById('verify-code-button').style.display = 'inline-block';
 }
 
 document.getElementById('recoveryForm').addEventListener('submit', (e) => {

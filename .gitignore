@@ -37,3 +37,6 @@ build/
 
 ### Banco H2 local (perfil local) ###
 /data/
+
+### Credenciais SMTP locais (não commitar) ###
+rodar-local.mail.bat

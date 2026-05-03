@@ -34,7 +34,7 @@ public class SecurityConfig {
 			    				"/login",
 			    				"/addMorador",
 			    				"/updateSenha",
-			    				"/sendCodMor",
+			    				"/emailSender/sendCodMor",
 			    				"/Style/**",
 			    				"/Scripts/**",
 			    				"/Images/**",

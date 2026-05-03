@@ -43,8 +43,30 @@ public class InfoMailController {
 		MailStructure mail = new MailStructure();
 		mail.setTitulo(titulo);
 		mail.setMensagem(mensagem);
-		ms.sendMail(email, mail, "codigos@marajoara.com");
-		return ResponseEntity.ok("Código enviado!");
+		try {
+			// Gmail exige que o From seja a conta autenticada (spring.mail.username).
+			ms.sendMail(email, mail, "");
+			return ResponseEntity.ok("Código enviado!");
+		} catch (IllegalArgumentException ex) {
+			return ResponseEntity.badRequest().body(ex.getMessage());
+		} catch (IllegalStateException ex) {
+			String detalhe = causaRaizBreve(ex);
+			return ResponseEntity.internalServerError().body(
+					"Não foi possível enviar o e-mail. Verifique usuário/senha SMTP (Senha de app do Gmail) e conexão."
+							+ (detalhe.isEmpty() ? "" : " Detalhe: " + detalhe));
+		}
+	}
+
+	private static String causaRaizBreve(Throwable ex) {
+		Throwable cur = ex;
+		while (cur != null && cur.getCause() != null && cur != cur.getCause()) {
+			cur = cur.getCause();
+		}
+		if (cur == null || cur.getMessage() == null) {
+			return "";
+		}
+		String msg = cur.getMessage().replace('\r', ' ').replace('\n', ' ').trim();
+		return msg.length() > 280 ? msg.substring(0, 277) + "..." : msg;
 	}
 
 }
